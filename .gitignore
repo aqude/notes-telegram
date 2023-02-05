@@ -2,3 +2,4 @@ config.yaml
 tests.py
 .handler-saves
 .idea
+__pycache__
