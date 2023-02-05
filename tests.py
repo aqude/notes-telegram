@@ -15,6 +15,7 @@ class Notes(Base):
 
     id = Column(Integer, primary_key=True)
     text = Column(String)
+    date = Column(String)
 
     # text
     def __repr__(self):
@@ -39,11 +40,12 @@ class ConnectDB:
         self.session.add(Notes(text=note))
         self.session.commit()
 
-    def read_db(self):
+    def read_db(self, date=None):
         notes = self.session.query(Notes).all()
         notes = [note.text for note in notes]
         # конвертируем в строку
         notes = '\n'.join(notes)
         return notes
 
-
+db = ConnectDB()
+print(db.read_db())
